@@ -8,6 +8,7 @@ public class Talos extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		// Test
+		System.out.println("Juste un petit test!");
 		new CPS(this.getConfig().getBoolean("modules.cps"));
 	}
 
