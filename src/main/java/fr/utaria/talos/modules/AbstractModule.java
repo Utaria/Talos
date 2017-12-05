@@ -1,6 +1,10 @@
 package fr.utaria.talos.modules;
 
-public abstract class AbstractModule {
+import fr.utaria.talos.Talos;
+import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
+
+public abstract class AbstractModule implements Listener {
 
 	private String name;
 	private boolean active;
@@ -8,6 +12,8 @@ public abstract class AbstractModule {
 	AbstractModule(String name, boolean active) {
 		this.name = name;
 		this.active = active;
+
+		Bukkit.getPluginManager().registerEvents(this, Talos.getInstance());
 
 		this.initialize();
 	}
