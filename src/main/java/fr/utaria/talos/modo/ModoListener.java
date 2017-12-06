@@ -5,7 +5,6 @@ import fr.utaria.talos.modules.PlayerInfos;
 import fr.utaria.talos.util.ModoUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,7 +20,7 @@ public class ModoListener implements Listener {
     public void onInteractInventory(InventoryClickEvent event) {
         Player player     = (Player) event.getWhoClicked();
         ItemStack current = event.getCurrentItem();
-        Inventory inv     = event.getClickedInventory();
+        Inventory inv     = event.getInventory();
 
         if (Talos.getModPlayers().contains(player.getUniqueId())) {
             if(inv instanceof PlayerInventory) {
