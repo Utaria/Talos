@@ -3,6 +3,7 @@ package fr.utaria.talos;
 import fr.utaria.talos.commands.ModoCommand;
 import fr.utaria.talos.modules.CPS;
 import fr.utaria.talos.modules.PlayerInfos;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -36,13 +37,24 @@ public class Talos extends JavaPlugin {
 		return null;
 	}
 
+	public static void addPlayer(Player player){
+		players.add(new PlayerInfos(player));
+	}
+
 	@Override
 	public void onEnable() {
+		instance = this;
+		players = new ArrayList<>();
+		modPlayers = new ArrayList<>();
+
 		// Test
 		System.out.println("Juste un petit test!");
 		new CPS(this.getConfig().getBoolean("modules.cps"));
 
 		this.getCommand("m").setExecutor(new ModoCommand());
+
+		Bukkit.getPluginManager().registerEvents(new TalosListener(), this);
+		Bukkit.getPluginManager().registerEvents(new ModoListener(), this);
 	}
 
 	@Override

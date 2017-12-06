@@ -14,6 +14,16 @@ public class PlayerInfos {
     private long lastBreakTime;
     private boolean state = false;
 
+    private boolean isModo = false;
+
+    public boolean isModo() {
+        return isModo;
+    }
+
+    public void setModo(boolean modo) {
+        isModo = modo;
+    }
+
     public PlayerInfos(Player player) {
         this.player = player;
     }
