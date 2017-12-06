@@ -1,6 +1,7 @@
 package fr.utaria.talos;
 
 import fr.utaria.talos.commands.ModoCommand;
+import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modules.CPS;
 import fr.utaria.talos.modules.PlayerInfos;
 import org.bukkit.Bukkit;

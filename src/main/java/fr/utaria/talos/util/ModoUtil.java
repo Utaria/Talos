@@ -19,10 +19,10 @@ public class ModoUtil {
     }
 
 
-    public static void prepareForModo(Player p) {
+    public static void prepareForModo(Player player) {
         //Sauvegarder l'inventaire du joueur [API]
-        p.getInventory().clear();
-        p.setGameMode(GameMode.SPECTATOR);
+        player.getInventory().clear();
+        player.setGameMode(GameMode.SPECTATOR);
         //p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2));
         //Mettre le joueur en vanish [API]
 
@@ -43,24 +43,25 @@ public class ModoUtil {
         book.setItemMeta(bookMeta);
         paper.setItemMeta(paperMeta);
 
-        p.getInventory().setItem(3, compass);
-        p.getInventory().setItem(4, book);
-        p.getInventory().setItem(5, paper);
+        player.getInventory().setItem(3, compass);
+        player.getInventory().setItem(4, book);
+        player.getInventory().setItem(5, paper);
     }
 
-    public static void prepareForPlayer(Player p) {
-        p.getInventory().clear();
-        p.setGameMode(GameMode.CREATIVE);
-        //R?cuperer l'inventaire du joueur [API]
+    public static void prepareForPlayer(Player player) {
+        player.getInventory().clear();
+        player.setGameMode(GameMode.CREATIVE);
+        //Récuperer l'inventaire du joueur [API]
         //Remettre le joueur dans le GameMode dans lequel il ?tait [API]
     }
 
+    //Faire le systeme de pagination
     public static Inventory createInventoryMenu(String name, int size) {
-        return Bukkit.createInventory(null, size, name + " - Page 1/1");
+        return Bukkit.createInventory(null, size, name);
     }
 
-    public static void openInventoryMenu(Inventory inv, Player p) {
-        p.openInventory(inv);
+    public static void openInventoryMenu(Inventory inv, Player player) {
+        player.openInventory(inv);
     }
 
     public static void fillInventoryMenuOfPlayers(Inventory inv) {
@@ -77,6 +78,11 @@ public class ModoUtil {
             i++;
         }
 
+    }
+
+    public static void fillInventoryMenuInfos(Inventory inv) {
+        ItemStack paper = new ItemStack(Material.PAPER);
+        ItemStack sword = new ItemStack(Material.IRON_SWORD);
     }
 
 }

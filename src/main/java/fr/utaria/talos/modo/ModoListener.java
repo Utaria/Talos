@@ -1,8 +1,11 @@
-package fr.utaria.talos;
+package fr.utaria.talos.modo;
 
+import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.PlayerInfos;
 import fr.utaria.talos.util.ModoUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,15 +41,21 @@ public class ModoListener implements Listener {
 
                 if(current.getType() == Material.PAPER && current.getItemMeta().getDisplayName().equals(ModoUtil.PAPER_NAME)) {
                     Inventory menu = ModoUtil.createInventoryMenu("Infos", 54);
+                    ModoUtil.fillInventoryMenuOfPlayers(menu);
                     ModoUtil.openInventoryMenu(menu, player);
                 }
-
-                //MENUS
-                if(current.getType() == Material.SKULL_ITEM) {
-
-                }
-
             }
+
+            //MENUS
+            if(current.getType() == Material.SKULL_ITEM && inv.getName().equals("Téléportation")) {
+                player.teleport(Bukkit.getPlayer(current.getItemMeta().getDisplayName()).getLocation());
+            }
+
+            if(current.getType() ==  Material.SKULL_ITEM && inv.getName().equals("Infos")) {
+                Inventory menu = ModoUtil.createInventoryMenu("Infos du joueur : " + current.getItemMeta().getDisplayName(), 9);
+                ModoUtil.openInventoryMenu(menu, player);
+            }
+
         }
 
     }
