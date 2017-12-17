@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 public class ModoListener implements Listener {
 
@@ -24,7 +24,7 @@ public class ModoListener implements Listener {
         Inventory inv     = event.getInventory();
 
         if (Talos.getModPlayers().contains(player.getUniqueId())) {
-            if(inv instanceof PlayerInventory) {
+            if (inv.getType() == InventoryType.CRAFTING) {
                 if(current.getType() == Material.AIR) return;
 
                 //TOOL BAR
