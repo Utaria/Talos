@@ -4,6 +4,7 @@ import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.PlayerInfos;
 import fr.utaria.talos.util.ModoUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,7 +36,7 @@ public class ModoListener implements Listener {
 
                 if(current.getType() == Material.BOOK && current.getItemMeta().getDisplayName().equals(ModoUtil.BOOK_NAME)) {
                     Inventory menu = ModoUtil.createInventoryMenu("Reports", 54);
-                    ModoUtil.openInventoryMenu(menu, player);
+                    //ModoUtil.openInventoryMenu(menu);
                 }
 
                 if(current.getType() == Material.PAPER && current.getItemMeta().getDisplayName().equals(ModoUtil.PAPER_NAME)) {
@@ -47,11 +48,13 @@ public class ModoListener implements Listener {
 
             //MENUS
             if(current.getType() == Material.SKULL_ITEM && inv.getName().equals("Téléportation")) {
-                player.teleport(Bukkit.getPlayer(current.getItemMeta().getDisplayName()).getLocation());
+                String playerName = ChatColor.stripColor(current.getItemMeta().getDisplayName());
+                player.teleport(Bukkit.getPlayer(playerName));
             }
 
             if(current.getType() ==  Material.SKULL_ITEM && inv.getName().equals("Infos")) {
                 Inventory menu = ModoUtil.createInventoryMenu("Infos du joueur : " + current.getItemMeta().getDisplayName(), 9);
+                ModoUtil.fillInventoryMenuInfos(menu);
                 ModoUtil.openInventoryMenu(menu, player);
             }
 
