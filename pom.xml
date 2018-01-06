@@ -41,22 +41,17 @@
 
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>utaria-repo</id>
+            <url>https://ci.utaria.fr/repository/</url>
         </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.2</version>
-            <scope>test</scope>
+            <groupId>fr.utaria</groupId>
+            <artifactId>utariacore-api</artifactId>
+            <version>0.8.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 
