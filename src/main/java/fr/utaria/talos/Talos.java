@@ -4,14 +4,15 @@ import fr.utaria.talos.commands.ModoCommand;
 import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modules.CPS;
 import fr.utaria.talos.modules.PlayerInfos;
+import fr.utaria.utariacore.UtariaPlugin;
+import fr.utaria.utariadatabase.database.DatabaseManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Talos extends JavaPlugin {
+public class Talos extends UtariaPlugin {
 
 	public static Talos instance;
 	public static ArrayList<PlayerInfos> players;
@@ -53,6 +54,8 @@ public class Talos extends JavaPlugin {
 		new CPS(this.getConfig().getBoolean("modules.cps"));
 
 		this.getCommand("m").setExecutor(new ModoCommand());
+
+		DatabaseManager.registerDatabase("talos");
 
 		Bukkit.getPluginManager().registerEvents(new TalosListener(), this);
 		Bukkit.getPluginManager().registerEvents(new ModoListener(), this);

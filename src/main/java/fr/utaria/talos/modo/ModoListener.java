@@ -3,6 +3,8 @@ package fr.utaria.talos.modo;
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.PlayerInfos;
 import fr.utaria.talos.util.ModoUtil;
+import fr.utaria.utariacore.players.PlayerInfo;
+import fr.utaria.utariacore.players.PlayersManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -66,9 +68,13 @@ public class ModoListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         PlayerInfos playerinfos = new PlayerInfos(player);
+
         if(!Talos.getPlayers().contains(playerinfos)) {
             Talos.getPlayers().add(playerinfos);
         }
+
+        // On applique directement le grade de Modérateur pour les tests
+		PlayerInfo.get(player).setRank(PlayersManager.getRankByName("Modérateur"));
     }
 
 }
