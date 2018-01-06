@@ -1,5 +1,6 @@
 package fr.utaria.talos.util;
 
+import com.mysql.fabric.xmlrpc.base.Array;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -48,6 +49,8 @@ public class ModoUtil {
         compassMeta.setDisplayName(COMPASS_NAME);
         bookMeta.setDisplayName(BOOK_NAME);
         paperMeta.setDisplayName(PAPER_NAME);
+
+        COMPASS_LORE.add();
 
         compassMeta.setLore(COMPASS_LORE);
         bookMeta.setLore(BOOK_LORE);
