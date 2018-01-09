@@ -1,6 +1,5 @@
 package fr.utaria.talos.util;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -31,11 +30,6 @@ public class ModoUtil {
 
 
     public static void prepareForModo(Player player) {
-        //Sauvegarder l'inventaire du joueur [API]
-        player.getInventory().clear();
-        player.setGameMode(GameMode.SPECTATOR);
-        //p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2));
-        //Mettre le joueur en vanish [API]
 
         ItemStack compass = new ItemStack(Material.COMPASS);
         ItemStack book    = new ItemStack(Material.BOOK);
@@ -50,7 +44,7 @@ public class ModoUtil {
         bookMeta.setDisplayName(BOOK_NAME);
         paperMeta.setDisplayName(PAPER_NAME);
 
-        COMPASS_LORE.add();
+        //COMPASS_LORE.add();
 
         compassMeta.setLore(COMPASS_LORE);
         bookMeta.setLore(BOOK_LORE);
@@ -63,22 +57,7 @@ public class ModoUtil {
         player.getInventory().setItem(3, compass);
         player.getInventory().setItem(4, book);
         player.getInventory().setItem(5, paper);
-    }
 
-    public static void prepareForPlayer(Player player) {
-        player.getInventory().clear();
-        player.setGameMode(GameMode.CREATIVE);
-        //Récuperer l'inventaire du joueur [API]
-        //Remettre le joueur dans le GameMode dans lequel il ?tait [API]
-    }
-
-    //Faire le systeme de pagination
-    public static Inventory createInventoryMenu(String name, int size) {
-        return Bukkit.createInventory(null, size, name);
-    }
-
-    public static void openInventoryMenu(Inventory inv, Player player) {
-        player.openInventory(inv);
     }
 
     public static void fillInventoryMenuOfPlayers(Inventory inv) {
