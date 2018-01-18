@@ -44,8 +44,6 @@ public class ModoUtil {
         bookMeta.setDisplayName(BOOK_NAME);
         paperMeta.setDisplayName(PAPER_NAME);
 
-        //COMPASS_LORE.add();
-
         compassMeta.setLore(COMPASS_LORE);
         bookMeta.setLore(BOOK_LORE);
         paperMeta.setLore(PAPER_LORE);
@@ -60,24 +58,8 @@ public class ModoUtil {
 
     }
 
-    public static void fillInventoryMenuOfPlayers(Inventory inv) {
-
-        int i = 0;
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            //if(player.getName().equals(viewer.getName())) continue;
-            ItemStack headPlayer = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
-            SkullMeta headPlayerMeta = (SkullMeta) headPlayer.getItemMeta();
-            headPlayerMeta.setOwner(player.getName());
-            //COULEUR DU NOM EN FONCTION DE LA VIOLATION
-            headPlayerMeta.setDisplayName(ChatColor.RED + player.getName());
-            headPlayer.setItemMeta(headPlayerMeta);
-            inv.setItem(i, headPlayer);
-            i++;
-        }
-
-    }
-
     public static void fillInventoryMenuInfos(Inventory inv) {
+
         ItemStack paper = new ItemStack(Material.PAPER);
 
         ItemMeta paperMeta = paper.getItemMeta();
@@ -93,7 +75,6 @@ public class ModoUtil {
 
         inv.setItem(4, paper);
 
-        //ItemStack sword = new ItemStack(Material.IRON_SWORD);
     }
 
 }

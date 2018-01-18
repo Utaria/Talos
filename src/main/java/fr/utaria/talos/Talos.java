@@ -2,6 +2,7 @@ package fr.utaria.talos;
 
 import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modo.ModoMode;
+import fr.utaria.talos.modules.AutoClick;
 import fr.utaria.talos.modules.CPS;
 import fr.utaria.talos.modules.PlayerInfos;
 import fr.utaria.utariacore.UtariaPlugin;
@@ -25,9 +26,9 @@ public class Talos extends UtariaPlugin {
 		return players;
 	}
 
-	public static PlayerInfos getPlayerInfos(Player p) {
+	public static PlayerInfos getPlayerInfos(Player player) {
 		for(PlayerInfos playerinfos : players) {
-			if(playerinfos.getPlayer().getUniqueId().equals(p.getUniqueId())) {
+			if(playerinfos.getPlayer().getUniqueId().equals(player.getUniqueId())) {
 				return playerinfos;
 			}
 		}
@@ -46,6 +47,7 @@ public class Talos extends UtariaPlugin {
 		// Test
 		System.out.println("Juste un petit test!");
 		new CPS(this.getConfig().getBoolean("modules.cps"));
+		new AutoClick(this.getConfig().getBoolean("module.auto-click"));
 
 		PlayerModes.registerPlayerMode(new ModoMode());
 
