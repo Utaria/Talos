@@ -20,36 +20,36 @@ public class CPS extends AbstractModule {
 	@EventHandler
 	public void onClick(PlayerInteractEvent event){
 		if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-			Talos.getPlayerInfos(event.getPlayer()).incSCPS();
+			Talos.getPlayerInfo(event.getPlayer()).getCPSData().incCPS();
 		}
 	}
 
 	public void runTask() {
-		Bukkit.getScheduler().runTaskTimerAsynchronously(Talos.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTaskTimerAsynchronously(Talos.getInstance(), () -> {
 
-			@Override
-			public void run() {
+            for(PlayerInfo playerInfo : Talos.getPlayers()) {
 
-				for(PlayerInfos playerinfos : Talos.getPlayers()) {
+            	CPSData data = playerInfo.getCPSData();
 
-					playerinfos.saveSCPS();
+                data.saveSCPS();
 
-					if(playerinfos.stateTab()) {
-						playerinfos.setMCPS(playerinfos.getMoyCPS());
-						playerinfos.resetTimer();
-					}
+                if(data.stateTab()) {
+                    data.setCPM(data.getMoyCPS());
+                    data.resetTimer();
+                }
 
-					if(playerinfos.getSCPS() > playerinfos.getTCPS()) {
-						playerinfos.setTCPS(playerinfos.getSCPS());
-					}
-
-					playerinfos.setSCPS(0);
-
+				if(data.getCPS() > 5) {
+					playerInfo.incrementViolations(this, 1);
+					System.out.println(playerInfo.getViolations("CPS"));
 				}
 
-			}
+                if(data.getCPS() > data.getTCPS()) data.setTCPS(data.getCPS());
 
-		}, 0, 20);
+                data.setCPS(0);
+
+            }
+
+        }, 0, 20);
 	}
 
 }

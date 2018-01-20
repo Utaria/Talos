@@ -4,14 +4,11 @@ import fr.utaria.talos.Talos;
 import fr.utaria.talos.menus.ModoInfosMenu;
 import fr.utaria.talos.menus.ModoReportsMenu;
 import fr.utaria.talos.menus.ModoTeleportationMenu;
-import fr.utaria.talos.modules.PlayerInfos;
+import fr.utaria.talos.modules.PlayerInfo;
 import fr.utaria.talos.util.ModoUtil;
 import fr.utaria.utariacore.menus.Menu;
-import fr.utaria.utariacore.players.PlayerInfo;
 import fr.utaria.utariacore.players.PlayersManager;
 import fr.utaria.utariacore.players.UtariaPlayer;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,14 +24,14 @@ public class ModoListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        PlayerInfos playerinfos = new PlayerInfos(player);
+        PlayerInfo playerinfo = new PlayerInfo(player);
 
-        if(!Talos.getPlayers().contains(playerinfos)) {
-            Talos.getPlayers().add(playerinfos);
+        if(!Talos.getPlayers().contains(playerinfo)) {
+            Talos.getPlayers().add(playerinfo);
         }
 
         // On applique directement le grade de Modérateur pour les tests
-		PlayerInfo.get(player).setRank(PlayersManager.getRankByName("Modérateur"));
+		fr.utaria.utariacore.players.PlayerInfo.get(player).setRank(PlayersManager.getRankByName("Modérateur"));
     }
 
     @EventHandler

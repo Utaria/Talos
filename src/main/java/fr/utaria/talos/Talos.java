@@ -4,30 +4,29 @@ import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modo.ModoMode;
 import fr.utaria.talos.modules.AutoClick;
 import fr.utaria.talos.modules.CPS;
-import fr.utaria.talos.modules.PlayerInfos;
+import fr.utaria.talos.modules.PlayerInfo;
 import fr.utaria.utariacore.UtariaPlugin;
 import fr.utaria.utariacore.players.modes.PlayerModes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Talos extends UtariaPlugin {
 
 	public static Talos instance;
-	public static ArrayList<PlayerInfos> players;
+	public static ArrayList<PlayerInfo> players;
 
 	public static Talos getInstance() {
 		return instance;
 	}
 
-	public static ArrayList<PlayerInfos> getPlayers() {
+	public static ArrayList<PlayerInfo> getPlayers() {
 		return players;
 	}
 
-	public static PlayerInfos getPlayerInfos(Player player) {
-		for(PlayerInfos playerinfos : players) {
+	public static PlayerInfo getPlayerInfo(Player player) {
+		for(PlayerInfo playerinfos : players) {
 			if(playerinfos.getPlayer().getUniqueId().equals(player.getUniqueId())) {
 				return playerinfos;
 			}
@@ -36,7 +35,7 @@ public class Talos extends UtariaPlugin {
 	}
 
 	public static void addPlayer(Player player){
-		players.add(new PlayerInfos(player));
+		players.add(new PlayerInfo(player));
 	}
 
 	@Override
