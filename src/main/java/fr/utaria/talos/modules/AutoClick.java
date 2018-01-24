@@ -1,5 +1,7 @@
 package fr.utaria.talos.modules;
 
+import fr.utaria.talos.Talos;
+import fr.utaria.talos.modules.data.AutoClickData;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,28 +18,26 @@ public class AutoClick extends AbstractModule {
         System.out.println("active? " + this.isActive());
     }
 
-
-    private long lastClickTime;
-    private long lastGap;
-
     @EventHandler public void onClick(PlayerInteractEvent event){
 
         Player player = event.getPlayer();
         Action action = event.getAction();
 
+        AutoClickData AutoClickData = Talos.getPlayerInfo(player).getAutoClickdata();
+
         if(action == Action.LEFT_CLICK_AIR || action == Action.RIGHT_CLICK_AIR){
 
-            long now = System.currentTimeMillis();
+            AutoClickData.setNow(System.currentTimeMillis());
 
-            if(this.lastClickTime == 0) this.lastClickTime = now;
+            if(AutoClickData.getLastClickTime() == 0) AutoClickData.setLastClickTime(AutoClickData.getNow());
 
-            long gap = now - lastClickTime;
+            AutoClickData.setGap(AutoClickData.getNow() - AutoClickData.getLastClickTime());
 
-            if(this.lastGap == gap) player.sendMessage(ChatColor.RED + "CHEAT");
+            if(AutoClickData.getLastGap() == AutoClickData.getGap()) player.sendMessage(ChatColor.RED + "CHEAT");
 
-            if(this.lastGap == 0) this.lastGap = gap;
+            if(AutoClickData.getLastGap() == 0) AutoClickData.setLastGap(AutoClickData.getGap());
 
-            this.lastClickTime = now;
+            AutoClickData.setLastClickTime(AutoClickData.getNow());
 
         }
 

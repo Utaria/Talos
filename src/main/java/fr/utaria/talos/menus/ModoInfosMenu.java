@@ -20,7 +20,6 @@ public class ModoInfosMenu extends Menu {
 
     public ModoInfosMenu(Player player){
         super("Infos des joueurs", MenuSize.SIX_LINE);
-        lore = new DescriptionBuilder();
         plugList = new ArrayList<>();
         this.preparer(player);
     }
@@ -28,6 +27,7 @@ public class ModoInfosMenu extends Menu {
     private void preparer(Player viewer) {
         int i = 0;
         for(Player player : Bukkit.getOnlinePlayers()){
+            lore = new DescriptionBuilder();
             //if(player.getName().equals(viewer.getName())) continue;
             //COULEUR DU NOM EN FONCTION DE LA VIOLATION
             lore.append(ChatColor.GOLD + "Infos du joueur :");

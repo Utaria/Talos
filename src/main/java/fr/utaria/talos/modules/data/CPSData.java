@@ -1,4 +1,4 @@
-package fr.utaria.talos.modules;
+package fr.utaria.talos.modules.data;
 
 import org.bukkit.entity.Player;
 
