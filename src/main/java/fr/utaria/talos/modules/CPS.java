@@ -19,7 +19,7 @@ public class CPS extends AbstractModule {
 	}
 
 	@EventHandler
-	public void onClick(PlayerInteractEvent event){
+	public void onClick(PlayerInteractEvent event) {
 		if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 			Talos.getPlayerInfo(event.getPlayer()).getCPSData().incCPS();
 		}
