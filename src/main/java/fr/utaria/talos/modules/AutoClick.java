@@ -19,27 +19,26 @@ public class AutoClick extends AbstractModule {
     }
 
     @EventHandler public void onClick(PlayerInteractEvent event){
-
         Player player = event.getPlayer();
         Action action = event.getAction();
 
         AutoClickData autoClickData = Talos.getPlayerInfo(player).getAutoClickdata();
 
-        if(action == Action.LEFT_CLICK_AIR || action == Action.RIGHT_CLICK_AIR){
+        if (action == Action.LEFT_CLICK_AIR || action == Action.RIGHT_CLICK_AIR) {
+			long now = System.currentTimeMillis();
+			long last = autoClickData.getLastClickTime();
+			long gap = now - last;
 
-            autoClickData.setNow(System.currentTimeMillis());
+			if (gap != now && gap >= 0) {
 
-            if(autoClickData.getLastClickTime() == 0) autoClickData.setLastClickTime(autoClickData.getNow());
+				if (autoClickData.getLastGap() == gap)
+					player.sendMessage(ChatColor.RED + "CHEAT");
 
-            autoClickData.setGap(autoClickData.getNow() - autoClickData.getLastClickTime());
+			}
 
-            if(autoClickData.getLastGap() == autoClickData.getGap()) player.sendMessage(ChatColor.RED + "CHEAT");
-
-            if(autoClickData.getLastGap() == 0) autoClickData.setLastGap(autoClickData.getGap());
-
-            autoClickData.setLastClickTime(autoClickData.getNow());
-
-        }
+			autoClickData.setLastGap(gap);
+			autoClickData.setLastClickTime(now);
+		}
 
     }
 
