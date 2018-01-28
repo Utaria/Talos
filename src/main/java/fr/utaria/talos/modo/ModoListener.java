@@ -3,6 +3,7 @@ package fr.utaria.talos.modo;
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.menus.ModoInfosMenu;
 import fr.utaria.talos.menus.ModoReportsMenu;
+import fr.utaria.talos.menus.ModoSettingsMenu;
 import fr.utaria.talos.menus.ModoTeleportationMenu;
 import fr.utaria.talos.modules.PlayerInfo;
 import fr.utaria.talos.util.ModoUtil;
@@ -59,6 +60,12 @@ public class ModoListener implements Listener {
                 //Menu of infos
                 if(current.getType() == Material.PAPER && current.getItemMeta().getDisplayName().equals(ModoUtil.PAPER_NAME)){
                     Menu menu = new ModoInfosMenu(player);
+                    menu.open(player);
+                }
+
+                //Menu of settings
+                if(current.getType() == Material.NAME_TAG && current.getItemMeta().getDisplayName().equals(ModoUtil.NAMETAG_NAME)){
+                    Menu menu = new ModoSettingsMenu(player);
                     menu.open(player);
                 }
 

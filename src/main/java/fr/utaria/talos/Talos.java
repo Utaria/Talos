@@ -1,5 +1,6 @@
 package fr.utaria.talos;
 
+import fr.utaria.talos.dev.DevMode;
 import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modo.ModoMode;
 import fr.utaria.talos.modules.AutoClick;
@@ -49,6 +50,7 @@ public class Talos extends UtariaPlugin {
 		new AutoClick(this.getConfig().getBoolean("module.auto-click"));
 
 		PlayerModes.registerPlayerMode(new ModoMode());
+		PlayerModes.registerPlayerMode(new DevMode());
 
 		Bukkit.getPluginManager().registerEvents(new TalosListener(), this);
 		Bukkit.getPluginManager().registerEvents(new ModoListener(), this);
