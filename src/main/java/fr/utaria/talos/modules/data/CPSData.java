@@ -5,10 +5,11 @@ import org.bukkit.entity.Player;
 public class CPSData {
 
     private Player player;
+
     private int CPS;
     private double CPM;
     private int TCPS;
-    private int[] tabCPS = new int[30];
+    private int[] tabCPS = new int[60];
     private int timerCPS = 0;
 
     private long lastBreakTime;
@@ -54,7 +55,7 @@ public class CPSData {
         return tabCPS;
     }
 
-    public void saveSCPS() {
+    public void saveCPS() {
         this.tabCPS[this.timerCPS] = this.CPS;
         this.timerCPS++;
     }

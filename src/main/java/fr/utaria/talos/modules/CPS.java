@@ -2,6 +2,7 @@ package fr.utaria.talos.modules;
 
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.data.CPSData;
+import fr.utaria.talos.util.DevUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
@@ -32,7 +33,7 @@ public class CPS extends AbstractModule {
 
             	CPSData data = playerInfo.getCPSData();
 
-                data.saveSCPS();
+                data.saveCPS();
 
                 if(data.stateTab()) {
                     data.setCPM(data.getMoyCPS());
@@ -44,6 +45,7 @@ public class CPS extends AbstractModule {
 					System.out.println("CHEAT");
 				}
 
+				DevUtil.sendDebug("CPS : " + data.getCPS());
 				//System.out.println(playerInfo.getViolation("CPS"));
 
                 if(data.getCPS() > data.getTCPS()) data.setTCPS(data.getCPS());

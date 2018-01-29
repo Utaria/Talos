@@ -13,7 +13,8 @@ public abstract class AbstractModule implements Listener {
 		this.name = name;
 		this.active = active;
 
-		Bukkit.getPluginManager().registerEvents(this, Talos.getInstance());
+		if(this.active)
+			Bukkit.getPluginManager().registerEvents(this, Talos.getInstance());
 
 		this.initialize();
 	}

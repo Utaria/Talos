@@ -23,20 +23,7 @@ import org.bukkit.inventory.PlayerInventory;
 public class ModoListener implements Listener {
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        PlayerInfo playerinfo = new PlayerInfo(player);
-
-        if(!Talos.getPlayers().contains(playerinfo)) {
-            Talos.getPlayers().add(playerinfo);
-        }
-
-        // On applique directement le grade de Modérateur pour les tests
-		fr.utaria.utariacore.players.PlayerInfo.get(player).setRank(PlayersManager.getRankByName("Modérateur"));
-    }
-
-    @EventHandler
-    public void onInteract(InventoryClickEvent event){
+    public void onClick(InventoryClickEvent event){
         Player player     = (Player) event.getWhoClicked();
         ItemStack current = event.getCurrentItem();
         Inventory inv     = event.getClickedInventory();
@@ -68,7 +55,6 @@ public class ModoListener implements Listener {
                     Menu menu = new ModoSettingsMenu(player);
                     menu.open(player);
                 }
-
 
             }
         }

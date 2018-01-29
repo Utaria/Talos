@@ -1,5 +1,6 @@
 package fr.utaria.talos.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,6 +16,8 @@ public class DevUtil {
 
     public static final ArrayList<String> CHEST_LORE   = new ArrayList<>();
     public static final ArrayList<String> NAMETAG_LORE = new ArrayList<>();
+
+    public static final String PREFIX_DEBUG = ChatColor.BOLD + "" + ChatColor.RED + "[DEBUG] " + ChatColor.WHITE;
 
     private DevUtil(){
 
@@ -45,6 +48,10 @@ public class DevUtil {
         player.getInventory().setItem(7, chest);
         player.getInventory().setItem(8, nameTag);
 
+    }
+
+    public static void sendDebug(String debug){
+        Bukkit.broadcastMessage(PREFIX_DEBUG + debug);
     }
 
 }

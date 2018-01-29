@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 public class AutoClickData {
 
     private Player player;
+
     private long lastClickTime;
     private long lastGap;
     private long now;
