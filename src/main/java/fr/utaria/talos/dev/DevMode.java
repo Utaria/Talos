@@ -1,6 +1,7 @@
 package fr.utaria.talos.dev;
 
 import fr.utaria.talos.util.DevUtil;
+import fr.utaria.utariacore.players.PlayersManager;
 import fr.utaria.utariacore.players.modes.PlayerMode;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -8,7 +9,7 @@ import org.bukkit.entity.Player;
 public class DevMode extends PlayerMode {
 
     public DevMode(){
-        super("dev", 30, GameMode.SPECTATOR);
+        super("dev", GameMode.SPECTATOR, PlayersManager.getRankByName("Développeur"));
     }
 
     @Override
