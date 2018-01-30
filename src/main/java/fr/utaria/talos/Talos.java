@@ -53,14 +53,14 @@ public class Talos extends UtariaPlugin {
 		new AutoClick(true);
 		new FastBreak(true);
 
-		DatabaseManager.registerDatabase("talos");
-
 		PlayerModes.registerPlayerMode(new ModoMode());
 		PlayerModes.registerPlayerMode(new DevMode());
 
 		Bukkit.getPluginManager().registerEvents(new TalosListener(), this);
 		Bukkit.getPluginManager().registerEvents(new ModoListener(), this);
 		Bukkit.getPluginManager().registerEvents(new DevListener(), this);
+
+		DatabaseManager.registerDatabase("talos");
 	}
 
 	@Override
