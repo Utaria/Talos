@@ -1,5 +1,6 @@
-package fr.utaria.talos.modules;
+package fr.utaria.talos;
 
+import fr.utaria.talos.modules.AbstractModule;
 import fr.utaria.talos.modules.data.AutoClickData;
 import fr.utaria.talos.modules.data.CPSData;
 import fr.utaria.talos.modules.data.FastBreakData;
@@ -18,12 +19,12 @@ public class PlayerInfo {
     private HashMap<AbstractModule, Double> violations = new HashMap<>();
     private HashMap<String, String> playerSettings = new HashMap<>();
 
-    public PlayerInfo(Player player){
+    PlayerInfo(Player player){
         this.player = player;
         this.CPSdata = new CPSData(this.player);
         this.AutoClickdata = new AutoClickData(this.player);
         this.FastBreakdata = new FastBreakData(this.player);
-        this.playerSettings = SettingsUtil.getPlayerSettings(player);
+        //this.playerSettings = SettingsUtil.getPlayerSettings(player);
     }
 
     public Player getPlayer(){

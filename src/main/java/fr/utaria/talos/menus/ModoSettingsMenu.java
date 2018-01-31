@@ -1,19 +1,15 @@
 package fr.utaria.talos.menus;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import fr.utaria.talos.Talos;
-import fr.utaria.talos.modules.PlayerInfo;
-import fr.utaria.talos.util.ModoUtil;
+import fr.utaria.talos.PlayerInfo;
 import fr.utaria.utariacore.menus.Menu;
 import fr.utaria.utariacore.menus.MenuSize;
 import fr.utaria.utariacore.menus.helper.DescriptionBuilder;
-import fr.utaria.utariacore.menus.items.MenuItem;
 import fr.utaria.utariacore.menus.items.StaticMenuItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class ModoSettingsMenu extends Menu {
 
@@ -26,8 +22,8 @@ public class ModoSettingsMenu extends Menu {
 
         PlayerInfo playerInfo = Talos.getPlayerInfo(viewer);
 
-        boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
-        boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
+        //boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
+        //boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
 
         final String BOOK2_NAME = ChatColor.RED + "Reports";
         final String JUKEBOX_NAME = ChatColor.GREEN + "Sons des notifications des reports";
@@ -41,10 +37,10 @@ public class ModoSettingsMenu extends Menu {
         DescriptionBuilder jukeBowDb = new DescriptionBuilder();
         DescriptionBuilder fireWorkDb = new DescriptionBuilder();
 
-        if(reports)
-            bookDb.append(ChatColor.GREEN + "Activer ✔");
-        else
-            bookDb.append(ChatColor.RED + "Desactiver ✘");
+        //if(reports)
+        //    bookDb.append(ChatColor.GREEN + "Activer ✔");
+        //else
+        //    bookDb.append(ChatColor.RED + "Desactiver ✘");
 
         StaticMenuItem bookMenuItem = new StaticMenuItem(BOOK2_NAME, book, bookDb.toArray());
         StaticMenuItem jukeBoxMenuItem = new StaticMenuItem(JUKEBOX_NAME, jukeBox);

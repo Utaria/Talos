@@ -1,6 +1,7 @@
 package fr.utaria.talos.modules;
 
 import fr.utaria.talos.Talos;
+import fr.utaria.talos.util.TalosUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -13,10 +14,12 @@ public abstract class AbstractModule implements Listener {
 		this.name = name;
 		this.active = active;
 
-		if(this.active)
+		if(this.active){
+			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " est activer !");
 			Bukkit.getPluginManager().registerEvents(this, Talos.getInstance());
-
-		this.initialize();
+			this.onEnable();
+		}else
+			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " n'est pas activer !");
 	}
 
 	public boolean isActive() {
@@ -27,6 +30,8 @@ public abstract class AbstractModule implements Listener {
 		return this.name;
 	}
 
-	public abstract void initialize();
+	public abstract void onEnable();
+
+	public abstract void onDisable();
 
 }

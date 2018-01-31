@@ -1,6 +1,7 @@
 package fr.utaria.talos.modo;
 
 import fr.utaria.talos.util.ModoUtil;
+import fr.utaria.utariacore.players.PlayerInfo;
 import fr.utaria.utariacore.players.modes.PlayerMode;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

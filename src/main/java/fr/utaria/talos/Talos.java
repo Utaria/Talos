@@ -7,7 +7,6 @@ import fr.utaria.talos.modo.ModoMode;
 import fr.utaria.talos.modules.AutoClick;
 import fr.utaria.talos.modules.CPS;
 import fr.utaria.talos.modules.FastBreak;
-import fr.utaria.talos.modules.PlayerInfo;
 import fr.utaria.utariacore.UtariaPlugin;
 import fr.utaria.utariacore.players.modes.PlayerModes;
 import fr.utaria.utariadatabase.database.DatabaseManager;
@@ -18,8 +17,8 @@ import java.util.ArrayList;
 
 public class Talos extends UtariaPlugin {
 
-	public static Talos instance;
-	public static ArrayList<PlayerInfo> players;
+	private static Talos instance;
+	private static ArrayList<PlayerInfo> players;
 
 	public static Talos getInstance() {
 		return instance;
@@ -38,7 +37,7 @@ public class Talos extends UtariaPlugin {
 		return null;
 	}
 
-	public static void addPlayer(Player player){
+	static void addPlayer(Player player){
 		players.add(new PlayerInfo(player));
 	}
 
@@ -47,10 +46,8 @@ public class Talos extends UtariaPlugin {
 		instance = this;
 		players = new ArrayList<>();
 
-		// Test
-		System.out.println("Juste un petit test!");
-		new CPS(true);
-		new AutoClick(true);
+		new CPS(false);
+		new AutoClick(false);
 		new FastBreak(true);
 
 		PlayerModes.registerPlayerMode(new ModoMode());

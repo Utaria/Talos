@@ -14,8 +14,12 @@ public class AutoClick extends AbstractModule {
         super("AutoClick", active);
     }
 
-    public void initialize() {
-        System.out.println("active? " + this.isActive());
+    public void onEnable() {
+
+    }
+
+    public void onDisable(){
+
     }
 
     @EventHandler public void onClick(PlayerInteractEvent event){

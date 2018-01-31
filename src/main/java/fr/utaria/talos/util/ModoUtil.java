@@ -1,18 +1,9 @@
 package fr.utaria.talos.util;
 
-import fr.utaria.talos.Talos;
-import fr.utaria.talos.modules.PlayerInfo;
-import fr.utaria.utariacore.menus.Menu;
-import fr.utaria.utariacore.menus.event.ItemClickEvent;
-import fr.utaria.utariacore.menus.event.ItemClickListener;
-import fr.utaria.utariacore.menus.helper.DescriptionBuilder;
-import fr.utaria.utariacore.menus.items.StaticMenuItem;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 

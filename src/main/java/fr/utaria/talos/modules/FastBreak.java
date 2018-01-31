@@ -12,8 +12,12 @@ public class FastBreak extends AbstractModule {
         super("FastBreak", active);
     }
 
-    public void initialize() {
-        System.out.println("active? " + this.isActive());
+    public void onEnable() {
+
+    }
+
+    public void onDisable(){
+
     }
 
     @EventHandler

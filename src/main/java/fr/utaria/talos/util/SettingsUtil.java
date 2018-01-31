@@ -35,7 +35,6 @@ public class SettingsUtil {
         //#HELP - result.get?
         settings.put("speed_fly",  String.valueOf(result.getFloat("speed_fly")));
 
-
         return settings;
     }
 

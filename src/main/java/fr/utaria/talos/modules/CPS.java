@@ -1,5 +1,6 @@
 package fr.utaria.talos.modules;
 
+import fr.utaria.talos.PlayerInfo;
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.data.CPSData;
 import fr.utaria.talos.util.DevUtil;
@@ -12,11 +13,14 @@ public class CPS extends AbstractModule {
 
 	public CPS(boolean active) {
 		super("CPS", active);
+	}
+
+	public void onEnable() {
 		this.runTask();
 	}
 
-	public void initialize() {
-		System.out.println("active? " + this.isActive());
+	public void onDisable(){
+
 	}
 
 	@EventHandler
@@ -26,7 +30,7 @@ public class CPS extends AbstractModule {
 		}
 	}
 
-	public void runTask() {
+	private void runTask() {
 		Bukkit.getScheduler().runTaskTimerAsynchronously(Talos.getInstance(), () -> {
 
             for(PlayerInfo playerInfo : Talos.getPlayers()) {
