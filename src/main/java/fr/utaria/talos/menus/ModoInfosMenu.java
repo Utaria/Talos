@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ModoInfosMenu extends Menu {
 
-    private static DescriptionBuilder lore;
+    private static DescriptionBuilder db;
     private static ArrayList<String> plugList;
 
     public ModoInfosMenu(Player player){
@@ -27,14 +27,14 @@ public class ModoInfosMenu extends Menu {
     private void preparer(Player viewer) {
         int i = 0;
         for(Player player : Bukkit.getOnlinePlayers()){
-            lore = new DescriptionBuilder();
+            db = new DescriptionBuilder();
             //if(player.getName().equals(viewer.getName())) continue;
             //COULEUR DU NOM EN FONCTION DE LA VIOLATION
-            lore.append(ChatColor.GOLD + "Infos du joueur :");
-            lore.append(ChatColor.WHITE + "Cliques par seconde = ");
-            lore.append(ChatColor.WHITE + "Ping                = " + PlayerUtil.getPing(player) + "/ms");
-            lore.append(ChatColor.WHITE + "Violation           = 15");
-            SkullItem head = new SkullItem(ChatColor.RED + player.getName(), player.getName(), lore.toArray());
+            db.append(ChatColor.GOLD + "Infos du joueur :");
+            db.append(ChatColor.WHITE + "Cliques par seconde = ");
+            db.append(ChatColor.WHITE + "Ping                = " + PlayerUtil.getPing(player) + "/ms");
+            db.append(ChatColor.WHITE + "Violation           = 15");
+            SkullItem head = new SkullItem(ChatColor.RED + player.getName(), player.getName(), db.toArray());
 
             plugList.add(ChatColor.GOLD + "Infos du joueur " + player.getName() + ": ");
             plugList.add("");

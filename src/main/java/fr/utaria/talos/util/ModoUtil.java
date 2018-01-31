@@ -1,5 +1,12 @@
 package fr.utaria.talos.util;
 
+import fr.utaria.talos.Talos;
+import fr.utaria.talos.modules.PlayerInfo;
+import fr.utaria.utariacore.menus.Menu;
+import fr.utaria.utariacore.menus.event.ItemClickEvent;
+import fr.utaria.utariacore.menus.event.ItemClickListener;
+import fr.utaria.utariacore.menus.helper.DescriptionBuilder;
+import fr.utaria.utariacore.menus.items.StaticMenuItem;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,12 +22,12 @@ public class ModoUtil {
     public static final String COMPASS_NAME = ChatColor.GOLD + "Téléportation aux joueurs";
     public static final String BOOK_NAME    = ChatColor.GOLD + "Reports des joueurs";
     public static final String PAPER_NAME   = ChatColor.GOLD + "Infos des joueurs";
-    public static final String NAMETAG_NAME   = ChatColor.DARK_GRAY + "Paramètres du mode Modo";
+    public static final String NAMETAG_NAME = ChatColor.DARK_GRAY + "Paramètres du mode Modo";
 
-    public static final ArrayList<String> COMPASS_LORE = new ArrayList<>();
-    public static final ArrayList<String> BOOK_LORE    = new ArrayList<>();
-    public static final ArrayList<String> PAPER_LORE   = new ArrayList<>();
-    public static final ArrayList<String> NAMETAG_LORE   = new ArrayList<>();
+    private static final ArrayList<String> COMPASS_LORE = new ArrayList<>();
+    private static final ArrayList<String> BOOK_LORE    = new ArrayList<>();
+    private static final ArrayList<String> PAPER_LORE   = new ArrayList<>();
+    private static final ArrayList<String> NAMETAG_LORE = new ArrayList<>();
 
     //INFOS MENU
     public static final String INFOS_NAME = ChatColor.GOLD + "Information Générales";
@@ -30,6 +37,19 @@ public class ModoUtil {
 
     }
 
+    static{
+        //COMPASS
+        COMPASS_LORE.add("Permet de se téléporter à n'importe");
+        COMPASS_LORE.add("quel joueur en un clique !");
+        //BOOK
+        BOOK_LORE.add("Permet de prendre connaissance de");
+        BOOK_LORE.add("tout les reports de chaque joueur !");
+        //PAPER
+        PAPER_LORE.add("Permet d'avoir toute les infos de");
+        PAPER_LORE.add("chaque joueur ! (Violation, CPS...)");
+        //NAME TAG
+        NAMETAG_LORE.add("Permet de gérer tout les paramètres du mode Modo !");
+    }
 
     public static void prepareForModo(Player player) {
 
@@ -48,19 +68,6 @@ public class ModoUtil {
         paperMeta.setDisplayName(PAPER_NAME);
         nameTagMeta.setDisplayName(NAMETAG_NAME);
 
-        //#BUG - A chaque fois qu'on quitte le mode Modo et qu'on reviens dedans les lores ce dupliquent !!
-        //COMPASS
-        COMPASS_LORE.add("Permet de se téléporter à n'importe");
-        COMPASS_LORE.add("quel joueur en un clique !");
-        //BOOK
-        BOOK_LORE.add("Permet de prendre connaissance de");
-        BOOK_LORE.add("tout les reports de chaque joueur !");
-        //PAPER
-        PAPER_LORE.add("Permet d'avoir toute les infos de");
-        PAPER_LORE.add("chaque joueur ! (Violation, CPS...)");
-        //NAME TAG
-        NAMETAG_LORE.add("Permet de gérer tout les paramètres du mode Modo !");
-
         compassMeta.setLore(COMPASS_LORE);
         bookMeta.setLore(BOOK_LORE);
         paperMeta.setLore(PAPER_LORE);
@@ -77,5 +84,6 @@ public class ModoUtil {
         player.getInventory().setItem(8, nameTag);
 
     }
+
 
 }

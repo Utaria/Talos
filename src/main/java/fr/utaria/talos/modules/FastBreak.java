@@ -3,6 +3,7 @@ package fr.utaria.talos.modules;
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.data.FastBreakData;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class FastBreak extends AbstractModule {
@@ -15,6 +16,7 @@ public class FastBreak extends AbstractModule {
         System.out.println("active? " + this.isActive());
     }
 
+    @EventHandler
     public void onBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
 

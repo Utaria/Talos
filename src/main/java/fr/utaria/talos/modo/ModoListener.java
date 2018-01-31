@@ -10,6 +10,7 @@ import fr.utaria.talos.util.ModoUtil;
 import fr.utaria.utariacore.menus.Menu;
 import fr.utaria.utariacore.players.PlayersManager;
 import fr.utaria.utariacore.players.UtariaPlayer;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

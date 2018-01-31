@@ -24,14 +24,17 @@ public class SettingsUtil {
     public static HashMap<String, String> getPlayerSettings(Player player){
         HashMap<String, String> settings = new HashMap<>();
 
-        SelectQuery selectQuery = db.select("sound_reports","request_friends");
+        SelectQuery selectQuery = db.select();
         selectQuery.from("settings");
         selectQuery.where("player_id = ?");
         selectQuery.attributes(PlayerInfo.get(player).getId());
         DatabaseSet result = selectQuery.find();
 
+        settings.put("reports",  String.valueOf(result.getBoolean("reports")));
         settings.put("sound_reports",  String.valueOf(result.getBoolean("sound_reports")));
-        settings.put("request_friends", String.valueOf(result.getBoolean("request_friends")));
+        //#HELP - result.get?
+        settings.put("speed_fly",  String.valueOf(result.getFloat("speed_fly")));
+
 
         return settings;
     }

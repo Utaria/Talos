@@ -3,6 +3,7 @@ package fr.utaria.talos.modules;
 import fr.utaria.talos.modules.data.AutoClickData;
 import fr.utaria.talos.modules.data.CPSData;
 import fr.utaria.talos.modules.data.FastBreakData;
+import fr.utaria.talos.util.SettingsUtil;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -15,12 +16,14 @@ public class PlayerInfo {
     private AutoClickData AutoClickdata;
     private FastBreakData FastBreakdata;
     private HashMap<AbstractModule, Double> violations = new HashMap<>();
+    private HashMap<String, String> playerSettings = new HashMap<>();
 
     public PlayerInfo(Player player){
         this.player = player;
         this.CPSdata = new CPSData(this.player);
         this.AutoClickdata = new AutoClickData(this.player);
         this.FastBreakdata = new FastBreakData(this.player);
+        this.playerSettings = SettingsUtil.getPlayerSettings(player);
     }
 
     public Player getPlayer(){
@@ -37,6 +40,10 @@ public class PlayerInfo {
 
     public FastBreakData getFastBreakdata(){
         return this.FastBreakdata;
+    }
+
+    public String getPlayerSetting(String key){
+        return this.playerSettings.get(key);
     }
 
     public void incrementViolation(AbstractModule module, double violation) {
