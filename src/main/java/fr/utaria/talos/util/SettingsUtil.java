@@ -30,10 +30,15 @@ public class SettingsUtil {
         selectQuery.attributes(PlayerInfo.get(player).getId());
         DatabaseSet result = selectQuery.find();
 
-        settings.put("reports",  String.valueOf(result.getBoolean("reports")));
-        settings.put("sound_reports",  String.valueOf(result.getBoolean("sound_reports")));
-        //#HELP - result.get?
-        settings.put("speed_fly",  String.valueOf(result.getFloat("speed_fly")));
+        if(result != null){
+            settings.put("reports",  String.valueOf(result.getBoolean("reports")));
+            settings.put("sound_reports",  String.valueOf(result.getBoolean("sound_reports")));
+            settings.put("speed_fly",  String.valueOf(result.getFloat("speed_fly")));
+        }else{
+            settings.put("reports", String.valueOf(true));
+            settings.put("sound_reports", String.valueOf(false));
+            settings.put("speed_fly", String.valueOf(true));
+        }
 
         return settings;
     }

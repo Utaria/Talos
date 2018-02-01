@@ -24,7 +24,7 @@ public class PlayerInfo {
         this.CPSdata = new CPSData(this.player);
         this.AutoClickdata = new AutoClickData(this.player);
         this.FastBreakdata = new FastBreakData(this.player);
-        //this.playerSettings = SettingsUtil.getPlayerSettings(player);
+        this.playerSettings = SettingsUtil.getPlayerSettings(player);
     }
 
     public Player getPlayer(){

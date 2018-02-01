@@ -22,8 +22,8 @@ public class ModoSettingsMenu extends Menu {
 
         PlayerInfo playerInfo = Talos.getPlayerInfo(viewer);
 
-        //boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
-        //boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
+        boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
+        boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
 
         final String BOOK2_NAME = ChatColor.RED + "Reports";
         final String JUKEBOX_NAME = ChatColor.GREEN + "Sons des notifications des reports";
@@ -34,16 +34,24 @@ public class ModoSettingsMenu extends Menu {
         ItemStack fireWork = new ItemStack(Material.FIREWORK);
 
         DescriptionBuilder bookDb = new DescriptionBuilder();
-        DescriptionBuilder jukeBowDb = new DescriptionBuilder();
+        DescriptionBuilder jukeBoxDb = new DescriptionBuilder();
         DescriptionBuilder fireWorkDb = new DescriptionBuilder();
 
-        //if(reports)
-        //    bookDb.append(ChatColor.GREEN + "Activer ✔");
-        //else
-        //    bookDb.append(ChatColor.RED + "Desactiver ✘");
+        final String activate = ChatColor.GREEN + "Activer " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.GREEN + "✔" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
+        final String desactivate = ChatColor.RED + "Desactiver " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.RED + "✘" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
+
+        if(reports)
+            bookDb.append(activate);
+        else
+            bookDb.append(desactivate);
+
+        if(soundsReports)
+            jukeBoxDb.append(activate);
+        else
+            jukeBoxDb.append(desactivate);
 
         StaticMenuItem bookMenuItem = new StaticMenuItem(BOOK2_NAME, book, bookDb.toArray());
-        StaticMenuItem jukeBoxMenuItem = new StaticMenuItem(JUKEBOX_NAME, jukeBox);
+        StaticMenuItem jukeBoxMenuItem = new StaticMenuItem(JUKEBOX_NAME, jukeBox, jukeBoxDb.toArray());
         StaticMenuItem fireWorkMenuItem = new StaticMenuItem(FIREWORK_NAME, fireWork);
 
         bookMenuItem.onItemClick(event -> {

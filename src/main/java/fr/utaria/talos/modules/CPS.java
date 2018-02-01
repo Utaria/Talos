@@ -3,6 +3,7 @@ package fr.utaria.talos.modules;
 import fr.utaria.talos.PlayerInfo;
 import fr.utaria.talos.Talos;
 import fr.utaria.talos.modules.data.CPSData;
+import fr.utaria.talos.util.CheatConsts;
 import fr.utaria.talos.util.DevUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -44,14 +45,17 @@ public class CPS extends AbstractModule {
                     data.resetTimer();
                 }
 
-				if(data.getCPS() > 12) {
-					playerInfo.incrementViolation(this, 1);
+				if(data.getCPS() > CheatConsts.CPS) {
 					System.out.println("CHEAT");
+                	if(data.getCPM() > CheatConsts.CPM){
+						int dif = data.getCPS() - CheatConsts.CPS;
+						playerInfo.incrementViolation(this, dif);
+					}
 				}
 
-				DevUtil.sendDebug("CPS : " + data.getCPS());
-				//System.out.println(playerInfo.getViolation("CPS"));
-
+				//DevUtil.sendDebug("CPS : " + data.getCPS());
+				System.out.println("Violation : " + playerInfo.getViolation("CPS"));
+				System.out.println("CPM : " + data.getCPM());
                 if(data.getCPS() > data.getTCPS()) data.setTCPS(data.getCPS());
 
                 data.setCPS(0);

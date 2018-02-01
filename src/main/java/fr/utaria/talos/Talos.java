@@ -46,9 +46,9 @@ public class Talos extends UtariaPlugin {
 		instance = this;
 		players = new ArrayList<>();
 
-		new CPS(false);
+		new CPS(true);
 		new AutoClick(false);
-		new FastBreak(true);
+		new FastBreak(false);
 
 		PlayerModes.registerPlayerMode(new ModoMode());
 		PlayerModes.registerPlayerMode(new DevMode());
