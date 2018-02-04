@@ -9,10 +9,12 @@ public abstract class AbstractModule implements Listener {
 
 	private String name;
 	private boolean active;
+	private double decrementViolation;
 
-	AbstractModule(String name, boolean active) {
-		this.name = name;
-		this.active = active;
+	AbstractModule(String name, boolean active, double decrementViolation) {
+		this.name               = name;
+		this.active             = active;
+		this.decrementViolation = decrementViolation;
 
 		if(this.active){
 			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " est activer !");
@@ -20,6 +22,7 @@ public abstract class AbstractModule implements Listener {
 			this.onEnable();
 		}else
 			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " n'est pas activer !");
+
 	}
 
 	public boolean isActive() {
@@ -28,6 +31,10 @@ public abstract class AbstractModule implements Listener {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public double getDecrementViolation() {
+		return decrementViolation;
 	}
 
 	public abstract void onEnable();

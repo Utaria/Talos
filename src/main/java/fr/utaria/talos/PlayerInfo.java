@@ -54,6 +54,13 @@ public class PlayerInfo {
         this.violations.put(module, value + violation);
     }
 
+    public void decrementViolation(AbstractModule module){
+        if(violations.containsKey(module)){
+            double value = violations.get(module);
+            this.violations.put(module, Math.max(value - module.getDecrementViolation(), 0));
+        }
+    }
+
     public double getViolation(String name) {
         for (Map.Entry<AbstractModule, Double> entry : violations.entrySet()){
             if(entry.getKey().getName().equals(name)) return entry.getValue();

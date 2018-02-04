@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class CPS extends AbstractModule {
 
 	public CPS(boolean active) {
-		super("CPS", active);
+		super("CPS", active, 5);
 	}
 
 	public void onEnable() {
@@ -36,26 +36,26 @@ public class CPS extends AbstractModule {
 
             for(PlayerInfo playerInfo : Talos.getPlayers()) {
 
+            	double dif;
+
             	CPSData data = playerInfo.getCPSData();
 
                 data.saveCPS();
 
                 if(data.stateTab()) {
                     data.setCPM(data.getMoyCPS());
+					if(data.getCPM() > CheatConsts.CPM){
+						dif = data.getCPM() - CheatConsts.CPM;
+						playerInfo.incrementViolation(this, dif);
+					}
                     data.resetTimer();
                 }
 
 				if(data.getCPS() > CheatConsts.CPS) {
-					System.out.println("CHEAT");
-                	if(data.getCPM() > CheatConsts.CPM){
-						int dif = data.getCPS() - CheatConsts.CPS;
-						playerInfo.incrementViolation(this, dif);
-					}
+					dif = data.getCPS() - CheatConsts.CPS;
+					playerInfo.incrementViolation(this, dif);
 				}
 
-				//DevUtil.sendDebug("CPS : " + data.getCPS());
-				System.out.println("Violation : " + playerInfo.getViolation("CPS"));
-				System.out.println("CPM : " + data.getCPM());
                 if(data.getCPS() > data.getTCPS()) data.setTCPS(data.getCPS());
 
                 data.setCPS(0);

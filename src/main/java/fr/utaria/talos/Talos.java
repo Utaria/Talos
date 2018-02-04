@@ -4,9 +4,7 @@ import fr.utaria.talos.dev.DevListener;
 import fr.utaria.talos.dev.DevMode;
 import fr.utaria.talos.modo.ModoListener;
 import fr.utaria.talos.modo.ModoMode;
-import fr.utaria.talos.modules.AutoClick;
-import fr.utaria.talos.modules.CPS;
-import fr.utaria.talos.modules.FastBreak;
+import fr.utaria.talos.managers.ModulesManager;
 import fr.utaria.utariacore.UtariaPlugin;
 import fr.utaria.utariacore.players.modes.PlayerModes;
 import fr.utaria.utariadatabase.database.DatabaseManager;
@@ -46,9 +44,7 @@ public class Talos extends UtariaPlugin {
 		instance = this;
 		players = new ArrayList<>();
 
-		new CPS(true);
-		new AutoClick(false);
-		new FastBreak(false);
+		new ModulesManager();
 
 		PlayerModes.registerPlayerMode(new ModoMode());
 		PlayerModes.registerPlayerMode(new DevMode());

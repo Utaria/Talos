@@ -1,0 +1,40 @@
+package fr.utaria.talos.managers;
+
+import fr.utaria.talos.Talos;
+import fr.utaria.talos.modules.AbstractModule;
+import fr.utaria.talos.modules.AutoClick;
+import fr.utaria.talos.modules.CPS;
+import fr.utaria.talos.modules.FastBreak;
+import fr.utaria.utariacore.AbstractManager;
+
+import java.util.ArrayList;
+
+public class ModulesManager extends AbstractManager {
+
+    private ArrayList<AbstractModule> modules;
+
+    public ModulesManager(){
+        super(Talos.getInstance());
+
+        modules = new ArrayList<>();
+
+        this.addModule(new AutoClick(true));
+        this.addModule(new CPS(true));
+        this.addModule(new FastBreak(true));
+    }
+
+    @Override
+    public void initialize() {
+
+    }
+
+    public static ArrayList<AbstractModule> getModules(){
+        return modules;
+    }
+
+    private void addModule(AbstractModule module){
+        if(!modules.contains(module))
+            modules.add(module);
+    }
+
+}
