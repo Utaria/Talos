@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 public class FastBreak extends AbstractModule {
 
     public FastBreak(boolean active){
-        super("FastBreak", active);
+        super("FastBreak", active, 5);
     }
 
     public void onEnable() {

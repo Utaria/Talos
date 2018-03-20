@@ -46,6 +46,10 @@ public class PlayerInfo {
     public String getPlayerSetting(String key){
         return this.playerSettings.get(key);
     }
+    
+    public void setPlayerSetting(String key, String value) {
+    	this.playerSettings.put(key, value);
+    }
 
     public void incrementViolation(AbstractModule module, double violation) {
         double value = 0;

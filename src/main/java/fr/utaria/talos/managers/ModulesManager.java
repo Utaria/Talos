@@ -28,7 +28,7 @@ public class ModulesManager extends AbstractManager {
 
     }
 
-    public static ArrayList<AbstractModule> getModules(){
+    public ArrayList<AbstractModule> getModules(){
         return modules;
     }
 

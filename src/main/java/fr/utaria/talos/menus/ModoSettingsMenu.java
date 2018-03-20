@@ -25,8 +25,8 @@ public class ModoSettingsMenu extends Menu {
         boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
         boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
 
-        final String BOOK2_NAME = ChatColor.RED + "Reports";
-        final String JUKEBOX_NAME = ChatColor.GREEN + "Sons des notifications des reports";
+        final String BOOK2_NAME = ChatColor.AQUA + "Reports";
+        final String JUKEBOX_NAME = ChatColor.DARK_GREEN + "Sons des notifications des reports";
         final String FIREWORK_NAME = ChatColor.WHITE + "Vitesse de FLY";
 
         ItemStack book     = new ItemStack(Material.BOOK);
@@ -55,8 +55,10 @@ public class ModoSettingsMenu extends Menu {
         StaticMenuItem fireWorkMenuItem = new StaticMenuItem(FIREWORK_NAME, fireWork);
 
         bookMenuItem.onItemClick(event -> {
-
-
+        	if(reports)
+        		playerInfo.setPlayerSetting("reports", "false");
+        	else
+        		playerInfo.setPlayerSetting("reports", "true");
 
             event.setWillUpdate(true);
         });

@@ -1,0 +1,7 @@
+name: Talos
+version: 0.0.1
+author: Utaria
+main: fr.utaria.talos.Talos
+depend: [UtariaCore]
+commands:
+  m:

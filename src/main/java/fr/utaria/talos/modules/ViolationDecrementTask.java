@@ -13,7 +13,7 @@ public class ViolationDecrementTask implements Runnable {
 
     @Override
     public void run() {
-        for(AbstractModule module : ModulesManager.getModules())
+        for(AbstractModule module : Talos.getInstance().getInstance(ModulesManager.class).getModules())
             for(Player player : Bukkit.getOnlinePlayers())
                 Talos.getPlayerInfo(player).decrementViolation(module);
     }

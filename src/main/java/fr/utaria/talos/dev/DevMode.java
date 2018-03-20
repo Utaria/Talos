@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class DevMode extends PlayerMode {
 
     public DevMode(){
-        super("dev", GameMode.SPECTATOR, PlayersManager.getRankByName("Développeur"));
+        super("dev", GameMode.SPECTATOR);
     }
 
     @Override

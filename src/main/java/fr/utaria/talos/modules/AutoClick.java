@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class AutoClick extends AbstractModule {
 
     public AutoClick(boolean active) {
-        super("AutoClick", active);
+        super("AutoClick", active, 5);
     }
 
     public void onEnable() {
@@ -35,8 +35,8 @@ public class AutoClick extends AbstractModule {
 
 			if (gap != now && gap >= 0) {
 
-				if (autoClickData.getLastGap() == gap)
-					player.sendMessage(ChatColor.RED + "CHEAT");
+				if (autoClickData.getLastGap() == gap) {}
+					//player.sendMessage(ChatColor.RED + "CHEAT");
 
 			}
 

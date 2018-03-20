@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 public class ModoMode extends PlayerMode {
 
     public ModoMode() {
-        super("modo", GameMode.SPECTATOR, 30);
+        super("modo", GameMode.SPECTATOR);
     }
 
     @Override

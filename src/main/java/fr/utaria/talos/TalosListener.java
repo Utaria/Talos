@@ -15,8 +15,6 @@ public class TalosListener implements Listener {
         Player player = event.getPlayer();
 
         Talos.addPlayer(event.getPlayer());
-
-        PlayerInfo.get(player).setRank(PlayersManager.getRankByName("Modérateur"));
     }
 
 }
