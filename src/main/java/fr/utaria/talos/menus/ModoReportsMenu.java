@@ -2,6 +2,8 @@ package fr.utaria.talos.menus;
 
 import fr.utaria.utariacore.menus.Menu;
 import fr.utaria.utariacore.menus.MenuSize;
+import fr.utaria.utariacore.menus.items.StaticMenuItem;
+
 import org.bukkit.entity.Player;
 
 public class ModoReportsMenu extends Menu {
@@ -12,7 +14,7 @@ public class ModoReportsMenu extends Menu {
     }
 
     private void preparer(Player viewer) {
-
+    	
     }
 
 }

@@ -70,7 +70,7 @@ public class ModoUtil {
         nameTag.setItemMeta(nameTagMeta);
 
         player.getInventory().setItem(3, compass);
-        player.getInventory().setItem(4, book);
+        //player.getInventory().setItem(4, book);
         player.getInventory().setItem(5, paper);
         player.getInventory().setItem(8, nameTag);
 

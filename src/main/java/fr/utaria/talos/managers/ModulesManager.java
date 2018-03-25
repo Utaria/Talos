@@ -24,6 +24,7 @@ public class ModulesManager extends AbstractManager {
         this.addModule(new AutoClick(false));
         this.addModule(new CPS(false));
         this.addModule(new FastBreak(false));
+        this.loadsModulesState();
     }
 
     @Override
@@ -53,7 +54,7 @@ public class ModulesManager extends AbstractManager {
     	for(DatabaseSet res : result) {
     		AbstractModule module = this.getModule(res.getString("name"));
     		if(module != null)
-    			module.setActive(res.getBoolean("state"));
+    			module.setActive(res.getInteger("state") == 1);
     	}
     }
     

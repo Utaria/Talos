@@ -20,7 +20,15 @@ public class DevUtil {
     public static final String PREFIX_DEBUG = ChatColor.BOLD + "" + ChatColor.RED + "[DEBUG] " + ChatColor.WHITE;
 
     private DevUtil(){
-
+    	
+    }
+    
+    static {
+        //CHEST
+        CHEST_LORE.add("Permet de gérer tout les paramètres");
+        CHEST_LORE.add("des modules de l'anti-cheat !");
+        //NAME TAG
+        NAMETAG_LORE.add("Permet de gérer tout les paramètres du mode Dev !");
     }
 
     public static void prepareForDev(Player player){
@@ -32,12 +40,6 @@ public class DevUtil {
 
         chestMeta.setDisplayName(CHEST_NAME);
         nameTagMeta.setDisplayName(NAMETAG_NAME);
-
-        //CHEST
-        CHEST_LORE.add("Permet de gérer tout les paramètres");
-        CHEST_LORE.add("des modules de l'anti-cheat !");
-        //NAME TAG
-        NAMETAG_LORE.add("Permet de gérer tout les paramètres du mode Dev !");
 
         chestMeta.setLore(CHEST_LORE);
         nameTagMeta.setLore(NAMETAG_LORE);
