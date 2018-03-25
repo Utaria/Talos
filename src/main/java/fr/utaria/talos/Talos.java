@@ -58,7 +58,7 @@ public class Talos extends UtariaPlugin {
 
 	@Override
 	public void onDisable() {
-		
+		getInstance(ModulesManager.class).saveModulesState();
 	}
 
 }

@@ -23,6 +23,8 @@ public class AutoClick extends AbstractModule {
     }
 
     @EventHandler public void onClick(PlayerInteractEvent event){
+    	if(!this.isActive()) return;
+    	
         Player player = event.getPlayer();
         Action action = event.getAction();
 

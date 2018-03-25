@@ -9,9 +9,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.scheduler.BukkitTask;
 
 public class CPS extends AbstractModule {
 
+	private BukkitTask task;
+	
 	public CPS(boolean active) {
 		super("CPS", active, 5);
 	}
@@ -21,18 +24,20 @@ public class CPS extends AbstractModule {
 	}
 
 	public void onDisable(){
-
+		if(this.task != null)
+			this.task.cancel();
 	}
 
 	@EventHandler
 	public void onClick(PlayerInteractEvent event) {
 		if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-			Talos.getPlayerInfo(event.getPlayer()).getCPSData().incCPS();
+			if(this.isActive())
+				Talos.getPlayerInfo(event.getPlayer()).getCPSData().incCPS();
 		}
 	}
 
 	private void runTask() {
-		Bukkit.getScheduler().runTaskTimerAsynchronously(Talos.getInstance(), () -> {
+		this.task = Bukkit.getScheduler().runTaskTimerAsynchronously(Talos.getInstance(), () -> {
 
             for(PlayerInfo playerInfo : Talos.getPlayers()) {
 

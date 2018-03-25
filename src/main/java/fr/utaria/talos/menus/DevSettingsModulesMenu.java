@@ -19,14 +19,14 @@ public class DevSettingsModulesMenu extends Menu {
         this.preparer(player);
     }
 
+    private final String activate = ChatColor.GREEN + "Activer " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.GREEN + "✔" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
+    private final String desactivate = ChatColor.RED + "Desactiver " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.RED + "✘" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
+    
     private void preparer(Player viewer) {
     	
     	int i = 0;
     	
     	for(AbstractModule module : Talos.getInstance().getInstance(ModulesManager.class).getModules()) {
-    		
-            final String activate = ChatColor.GREEN + "Activer " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.GREEN + "✔" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
-            final String desactivate = ChatColor.RED + "Desactiver " + ChatColor.DARK_GRAY + "(" + ChatColor.BOLD + ChatColor.RED + "✘" + ChatColor.RESET + ChatColor.DARK_GRAY + ")";
     		
             DescriptionBuilder moduleDb = new DescriptionBuilder();
             

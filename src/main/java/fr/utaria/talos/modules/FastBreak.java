@@ -22,7 +22,9 @@ public class FastBreak extends AbstractModule {
 
     @EventHandler
     public void onBreak(BlockBreakEvent event){
-        Player player = event.getPlayer();
+        if(!this.isActive()) return;
+        
+    	Player player = event.getPlayer();
 
         FastBreakData fastBreakData = Talos.getPlayerInfo(player).getFastBreakdata();
 
