@@ -31,8 +31,8 @@ public class SettingsUtil {
         DatabaseSet result = selectQuery.find();
 
         if(result != null){
-            settings.put("reports",  String.valueOf(result.getBoolean("reports")));
-            settings.put("sound_reports",  String.valueOf(result.getBoolean("sound_reports")));
+            settings.put("reports",  String.valueOf(result.getString("reports")));
+            settings.put("sound_reports",  String.valueOf(result.getString("sound_reports")));
             settings.put("speed_fly",  String.valueOf(result.getFloat("speed_fly")));
         }else{
             settings.put("reports", String.valueOf(true));
@@ -41,6 +41,10 @@ public class SettingsUtil {
         }
 
         return settings;
+    }
+    
+    public static void savePlayerSettings(Player player, HashMap<String, String> settings) {
+    	db.update("settings").fields(settings.keySet().toArray(new String[0])).values(settings.values().toArray(new String[0])).where("player_id = ?").attributes(PlayerInfo.get(player).getId()).execute();
     }
 
 }

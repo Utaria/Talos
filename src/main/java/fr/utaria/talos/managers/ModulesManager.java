@@ -18,9 +18,9 @@ public class ModulesManager extends AbstractManager {
 
         modules = new ArrayList<>();
 
-        this.addModule(new AutoClick(true));
-        this.addModule(new CPS(true));
-        this.addModule(new FastBreak(true));
+        this.addModule(new AutoClick(false));
+        this.addModule(new CPS(false));
+        this.addModule(new FastBreak(false));
     }
 
     @Override

@@ -43,6 +43,10 @@ public class PlayerInfo {
         return this.FastBreakdata;
     }
 
+    public HashMap<String, String> getPlayerSettings(){
+    	return this.playerSettings;
+    }
+    
     public String getPlayerSetting(String key){
         return this.playerSettings.get(key);
     }

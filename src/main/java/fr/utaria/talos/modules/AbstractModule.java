@@ -29,6 +29,15 @@ public abstract class AbstractModule implements Listener {
 		return this.active;
 	}
 
+	public void setActive(boolean active) {
+		this.active = active;
+		
+		if(this.isActive())
+			this.onEnable();
+		else
+			this.onDisable();
+	}
+	
 	public String getName() {
 		return this.name;
 	}

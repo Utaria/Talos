@@ -53,12 +53,12 @@ public class Talos extends UtariaPlugin {
 		Bukkit.getPluginManager().registerEvents(new ModoListener(), this);
 		Bukkit.getPluginManager().registerEvents(new DevListener(), this);
 
-		//DatabaseManager.registerDatabase("talos");
+		DatabaseManager.registerDatabase("talos");
 	}
 
 	@Override
 	public void onDisable() {
-
+		
 	}
 
 }

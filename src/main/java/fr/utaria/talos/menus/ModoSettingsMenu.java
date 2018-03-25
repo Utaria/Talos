@@ -17,13 +17,13 @@ public class ModoSettingsMenu extends Menu {
         super(ChatColor.GOLD + "Paramètres du mode Modo", MenuSize.ONE_LINE);
         this.preparer(player);
     }
-
+    
     private void preparer(Player viewer){
 
         PlayerInfo playerInfo = Talos.getPlayerInfo(viewer);
 
         boolean reports = Boolean.valueOf(playerInfo.getPlayerSetting("reports"));
-        boolean soundsReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
+        boolean soundReports = Boolean.valueOf(playerInfo.getPlayerSetting("sound_reports"));
 
         final String BOOK2_NAME = ChatColor.AQUA + "Reports";
         final String JUKEBOX_NAME = ChatColor.DARK_GREEN + "Sons des notifications des reports";
@@ -45,22 +45,37 @@ public class ModoSettingsMenu extends Menu {
         else
             bookDb.append(desactivate);
 
-        if(soundsReports)
+        if(soundReports)
             jukeBoxDb.append(activate);
         else
             jukeBoxDb.append(desactivate);
-
+        
+        fireWorkDb.append(ChatColor.GOLD + "SOON");
+        
         StaticMenuItem bookMenuItem = new StaticMenuItem(BOOK2_NAME, book, bookDb.toArray());
         StaticMenuItem jukeBoxMenuItem = new StaticMenuItem(JUKEBOX_NAME, jukeBox, jukeBoxDb.toArray());
         StaticMenuItem fireWorkMenuItem = new StaticMenuItem(FIREWORK_NAME, fireWork);
-
+        
         bookMenuItem.onItemClick(event -> {
         	if(reports)
         		playerInfo.setPlayerSetting("reports", "false");
         	else
         		playerInfo.setPlayerSetting("reports", "true");
-
-            event.setWillUpdate(true);
+        	
+        	this.preparer(viewer);
+        	
+        	event.setWillUpdate(true);
+        });
+        
+        jukeBoxMenuItem.onItemClick(event -> {
+        	if(soundReports)
+        		playerInfo.setPlayerSetting("sound_reports", "false");
+        	else
+        		playerInfo.setPlayerSetting("sound_reports", "true");
+        	
+        	this.preparer(viewer);
+        	
+        	event.setWillUpdate(true);
         });
 
         this.setItem(0, bookMenuItem);
