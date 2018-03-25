@@ -20,9 +20,13 @@ public class ModoTeleportationMenu extends Menu {
         int i = 0;
         for(Player player : Bukkit.getOnlinePlayers()){
             if(player.getName().equals(viewer.getName())) continue;
+            if(player.getWorld().getName().equals("event")) continue;
             //COULEUR DU NOM EN FONCTION DE LA VIOLATION
             SkullItem head = new SkullItem(player.getName(), player.getName());
-            head.onItemClick(itemClickEvent -> itemClickEvent.getPlayer().teleport(player));
+            head.onItemClick(itemClickEvent -> {
+            	if(!player.getWorld().getName().equals("event"))
+            		itemClickEvent.getPlayer().teleport(player);
+            });
             this.setItem(i, head);
             i++;
         }
