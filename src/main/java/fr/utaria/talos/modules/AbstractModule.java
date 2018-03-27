@@ -1,25 +1,53 @@
 package fr.utaria.talos.modules;
 
-public abstract class AbstractModule {
+import fr.utaria.talos.Talos;
+import fr.utaria.talos.util.TalosUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
+
+public abstract class AbstractModule implements Listener {
 
 	private String name;
 	private boolean active;
+	private double decrementViolation;
 
-	AbstractModule(String name, boolean active) {
-		this.name = name;
-		this.active = active;
+	AbstractModule(String name, boolean active, double decrementViolation) {
+		this.name               = name;
+		this.active             = active;
+		this.decrementViolation = decrementViolation;
 
-		this.initialize();
+		if(this.active){
+			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " est activer !");
+			Bukkit.getPluginManager().registerEvents(this, Talos.getInstance());
+			this.onEnable();
+		}else
+			System.out.println(TalosUtil.PREFIX_LOG + "Le module " + this.name + " n'est pas activer !");
+
 	}
 
 	public boolean isActive() {
 		return this.active;
 	}
 
+	public void setActive(boolean active) {
+		this.active = active;
+		
+		if(this.isActive())
+			this.onEnable();
+		else
+			this.onDisable();
+	}
+	
 	public String getName() {
 		return this.name;
 	}
 
-	public abstract void initialize();
+	public double getDecrementViolation() {
+		return decrementViolation;
+	}
+
+	public abstract void onEnable();
+
+	public abstract void onDisable();
 
 }
