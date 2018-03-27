@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.utaria</groupId>
-    <artifactId>Talos</artifactId>
+    <artifactId>talos</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>fr.utaria</groupId>
             <artifactId>utariacore-api</artifactId>
-            <version>0.8.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
     </dependencies>
